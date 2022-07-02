@@ -2,19 +2,20 @@ from flask import *
 from datetime import datetime
 
 import os
+import otp
 
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
+	the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
 
-    return """
-    <h1>Hello heroku</h1>
-    <p>It is currently {time}.</p>
+	return """
+	    <h1>Hello heroku</h1>
+	    <p>It is currently {time}.</p>
 
-    <img src="http://loremflickr.com/600/400" />
-    """.format(time=the_time)
+	    <img src="http://loremflickr.com/600/400" />
+	    """.format(time=the_time)
 #===========================download file================================
 @app.route('/return-files/')
 def return_files_tut():
@@ -27,27 +28,33 @@ def return_files_tut():
 	
 #========================upload file=====================================
 @app.route('/upload')  
-def upload():  
-    return render_template("file_upload_form.html")  
+def upload():
+	return render_template("file_upload_form.html")  
  
 @app.route('/success', methods = ['POST'])  
-def success():  
-    if request.method == 'POST':  
-        f = request.files['file']  
-        f.save(f.filename)  
-        return render_template("success.html", name = f.filename)  
+def success():
+	if request.method == 'POST':  
+		f = request.files['file']  
+		f.save(f.filename)  
+		return render_template("success.html", name = f.filename)  
 
+#=================================get totp===============================
+@app.route('/otp')
+def otp()
+	code = 'H5CHAUX5STZVLTMSFANBOBQ7WIESKQHC'
+	totp = TOTP(code)
+	return totp.now()
 
 
 @app.route('/getinfo')
 def getinfo():
-    s = ""
-    arr = os.listdir(os.path.normpath(os.getcwd()))
-    for i in arr :
-        s += str(i) + "\n"
-    return s
+	s = ""
+	arr = os.listdir(os.path.normpath(os.getcwd()))
+	for i in arr :
+		s += str(i) + "\n"
+	return s
 
 
 if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+	app.run(debug=True, use_reloader=True)
 
