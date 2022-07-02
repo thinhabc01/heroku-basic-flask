@@ -40,7 +40,7 @@ def success():
 
 #=================================get totp===============================
 @app.route('/otp')
-def otp()
+def otp():
 	code = 'H5CHAUX5STZVLTMSFANBOBQ7WIESKQHC'
 	totp = TOTP(code)
 	return totp.now()
