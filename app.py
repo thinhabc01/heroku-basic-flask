@@ -16,7 +16,7 @@ def homepage():
 @app.route('/return-files/')
 def return_files_tut():
 	try:
-		return send_file('requirements.txt', attachment_filename='requirements.txt')
+		return send_file('Untitled design.png', attachment_filename='Untitled design.png')
 	except Exception as e:
 		return str(e)
 
