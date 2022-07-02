@@ -39,9 +39,9 @@ def success():
 		return render_template("success.html", name = f.filename)  
 
 #=================================get totp===============================
-@app.route('/otp')
+@app.route('/otp', methods=['GET'] )
 def otp():
-	code = 'H5CHAUX5STZVLTMSFANBOBQ7WIESKQHC'
+	code = str(request.args.get('code'))
 	totp = TOTP(code)
 	return totp.now()
 
