@@ -13,6 +13,13 @@ def homepage():
     <img src="http://loremflickr.com/600/400" />
     """.format(time=the_time)
 
+@app.route('/return-files/')
+def return_files_tut():
+	try:
+		return send_file('requirements.txt', attachment_filename='requirements.txt')
+	except Exception as e:
+		return str(e)
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
 
