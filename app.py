@@ -3,6 +3,7 @@ from datetime import datetime
 from opt import TOTP
 
 import os
+import platform
 
 app = Flask(__name__)
 
@@ -53,6 +54,18 @@ def getinfo():
 	for i in arr :
 		s += str(i) + "\n"
 	return s
+
+@app.route('/getinfopc')
+def getinfopc():
+	txt = f"""
+	<h1>Machine: {platform.machine()}</h1>
+	<h1>Version: {platform.version()}</h1>
+	<h1>Plastform: {platform.platform()}</h1>
+	<h1>Uname: {platform.uname()}</h1>
+	<h1>System: {platform.system()}</h1>
+	<h1>Processor: {platform.processor()}</h1>
+"""
+	return txt
 
 
 if __name__ == '__main__':
