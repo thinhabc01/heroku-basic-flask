@@ -47,9 +47,9 @@ def otp():
 	return totp.now()
 
 #===============================chat=====================================
-@app.route('/chat')  
-def upload():
-	return render_template("chat.html")  
+# @app.route('/chat')  
+# def upload():
+# 	return render_template("chat.html")  
 #========================================================================
 
 
