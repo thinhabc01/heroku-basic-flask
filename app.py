@@ -56,7 +56,7 @@ def chat():
 	d = int(line) +1
 	
 	with open('dem.txt','w') as f:
-    		line = f.write(d)
+    		line = f.write(str(d))
 		
 	return d 
 #========================================================================
