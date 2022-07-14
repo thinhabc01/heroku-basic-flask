@@ -5,6 +5,8 @@ from opt import TOTP
 import os
 import platform
 
+d = 1
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -47,9 +49,10 @@ def otp():
 	return totp.now()
 
 #===============================chat=====================================
-@app.route('/chat')  
+@app.route('/getd')  
 def chat():
-	return render_template("chat.html")  
+	d+=1
+	return d  
 #========================================================================
 
 
