@@ -5,7 +5,6 @@ from opt import TOTP
 import os
 import platform
 
-d = 1
 
 app = Flask(__name__)
 
@@ -49,11 +48,17 @@ def otp():
 	return totp.now()
 
 #===============================chat=====================================
-@app.route('/getd')  
+@app.route('/chat')  
 def chat():
-	global d
-	d+=1
-	return d  
+	with open('dem.txt','r') as f:
+    		line = f.read()
+		
+	d = int(line) +1
+	
+	with open('dem.txt','w') as f:
+    		line = f.write(d)
+		
+	return d 
 #========================================================================
 
 
