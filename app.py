@@ -47,6 +47,10 @@ def otp():
 	totp = TOTP(code)
 	return totp.now()
 
+@app.route("/getip", methods=["GET"])
+def get_my_ip():
+    return request.remote_addr
+
 #===============================chat=====================================
 @app.route('/chat')  
 def chat():
