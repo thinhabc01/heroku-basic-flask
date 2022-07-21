@@ -68,7 +68,7 @@ def getinfo():
 	s = ""
 	arr = os.listdir(os.path.normpath(os.getcwd()))
 	for i in arr :
-		s +=f"<h1>{str(i)}</h1\n"
+		s +=f"<h1>{str(i)}</h1>\n"
 	return s
 
 @app.route('/getinfopc')
