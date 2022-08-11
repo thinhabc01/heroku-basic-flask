@@ -77,7 +77,8 @@ def getinfopc():
 	_memory = psutil.virtual_memory().total
 	txt = f"""
 	<h1><a href="/" class="home">Home Page</a></h1>
-	<h3>Machine: {platform.architecture()}</h3>
+	<h3>Machine: {platform.architecture()}</h3>)
+	<h3>System: {platform.system()}</h3>
 	<h3>Ram: ({int(psutil.virtual_memory().total /1000000)})</h3>
 """
 	return txt
