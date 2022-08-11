@@ -4,7 +4,7 @@ from opt import TOTP
 
 import os
 import platform
-
+import psutil
 
 app = Flask(__name__)
 
@@ -73,13 +73,12 @@ def getinfo():
 
 @app.route('/getinfopc')
 def getinfopc():
+	_os,_bit = platform.architecture()
+	_memory = psutil.virtual_memory().total
 	txt = f"""
-	<h1>Machine: {platform.machine()}</h1>
-	<h1>Version: {platform.version()}</h1>
-	<h1>Plastform: {platform.platform()}</h1>
-	<h1>Uname: {platform.uname()}</h1>
-	<h1>System: {platform.system()}</h1>
-	<h1>Processor: {platform.processor()}</h1>
+	<h1><a href="/" class="home">Home Page</a></h1>
+	<h3>Machine: {platform.architecture()}</h3>
+	<h3>Ram: ({int(psutil.virtual_memory().total /1000000)})</h3>
 """
 	return txt
 
