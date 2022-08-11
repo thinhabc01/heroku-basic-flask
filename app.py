@@ -79,7 +79,7 @@ def getinfopc():
 	<h1><a href="/" class="home">Home Page</a></h1>
 	<h3>Machine: {platform.architecture()}</h3>
 	<h3>System: {platform.system()}</h3>
-	<h3>Ram: ({round(psutil.virtual_memory().total /1073741824, 4)})</h3>
+	<h3>Ram: {round(psutil.virtual_memory().total/1073741824, 4)} GB</h3>
 """
 	return txt
 
