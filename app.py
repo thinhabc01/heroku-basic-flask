@@ -1,6 +1,6 @@
 from flask import *
 from datetime import datetime
-from opt import TOTP
+from opt import get_2fa
 
 import os
 import platform
@@ -40,8 +40,7 @@ def success():
 @app.route('/otp', methods=['GET'] )
 def otp():
 	code = str(request.args.get('code'))
-	totp = TOTP(code)
-	return totp.now()
+	return get_2fa(code)
 
 @app.route("/getip", methods=["GET"])
 def get_my_ip():
