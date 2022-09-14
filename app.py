@@ -82,6 +82,9 @@ def getinfopc():
 """
 	return txt
 
+@app.route('/test')  
+def tests():
+	return render_template("test.html")  
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
