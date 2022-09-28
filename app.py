@@ -84,7 +84,15 @@ def getinfopc():
 
 @app.route('/test')  
 def tests():
-	return render_template("test.html")  
+	return render_template("test.html")
+
+@app.route('/toolcrack1')  
+def toolcrack1():
+	return jsonify(
+        name = "FastSoft",
+	version = "v5.0.4",
+	author = "FastSoft"
+    )
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
